@@ -26,6 +26,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="360dp"
         android:layout_height="wrap_content"
+        app:startIconDrawable="@android:drawable/ic_menu_my_calendar"
         android:layout_marginTop="20dp"
         android:hint="Tanggal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,6 +35,8 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_tanggal"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="date"/>

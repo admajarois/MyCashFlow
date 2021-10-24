@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyCashFlow">
         <activity
-            android:name=".activities.Cashout_Activity"
+            android:name=".activities.CashoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.CashinActivity"
             android:exported="false" />
         <activity
             android:name=".activities.SplashActivity"
@@ -20,7 +23,7 @@
             android:exported="false" />
         <activity android:name=".MainActivity" />
         <activity
-            android:name=".activities.CashinActivity"
+            android:name=".activities.OptionsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
