@@ -12,4 +12,6 @@
     <color name="green_y">#D8E9A8</color>
     <color name="green_m">#4E9F3D</color>
     <color name="green_h">#1E5128</color>
+
+    <color name="danger">#FF0000</color>
 </resources>
