@@ -42,8 +42,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cashIn.setOnClickListener(this);
         cashOut.setOnClickListener(this);
         detailCash.setOnClickListener(this);
+        
+        Integer totalPemasukan = databaseHelper.total("1");
+        Integer totalPengeluaran = databaseHelper.total("0");
 
-
+        uangIn.setText("Rp. "+String.valueOf(totalPemasukan));
+        uangOut.setText("Rp. "+String.valueOf(totalPengeluaran));
     }
 
     @Override

@@ -115,4 +115,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
          cashCursor.close();
          return cashModelArrayList;
     }
+
+    public Integer total(String status) {
+         int jumlah = 0;
+         SQLiteDatabase MyDB = this.getWritableDatabase();
+         Cursor cursor = MyDB.rawQuery(
+                 "SELECT SUM(Nominal) FROM CashFlow WHERE Status =\""+ status+"\"", null
+         );
+         if (cursor.moveToFirst()) {
+             jumlah = cursor.getInt(0);
+         }
+         return jumlah;
+    }
 }

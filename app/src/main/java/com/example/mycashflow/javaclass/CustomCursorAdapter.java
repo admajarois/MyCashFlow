@@ -35,12 +35,15 @@ public class CustomCursorAdapter extends RecyclerView.Adapter<CustomCursorAdapte
         CashModel model = cashModelArrayList.get(position);
         if (model.getStatus() == 0) {
             holder.imageArrow.setImageResource(R.drawable.asset_2);
+            holder.nominal.setText("[-]Rp. "+model.getNominal());
+            holder.keterangan.setText(model.getKeterangan());
+            holder.tanggal.setText(model.getTanggal());
         } else {
             holder.imageArrow.setImageResource(R.drawable.asset_1);
+            holder.nominal.setText("[+]Rp. "+model.getNominal());
+            holder.keterangan.setText(model.getKeterangan());
+            holder.tanggal.setText(model.getTanggal());
         }
-        holder.nominal.setText(model.getNominal());
-        holder.keterangan.setText(model.getKeterangan());
-        holder.tanggal.setText(model.getTanggal());
     }
 
     @Override
