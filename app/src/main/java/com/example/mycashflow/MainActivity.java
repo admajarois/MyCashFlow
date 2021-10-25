@@ -19,8 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     ImageButton pengaturan, cashIn, cashOut, detailCash;
     DatabaseHelper databaseHelper;
-    TextView uangIn;
-    TextView uangOut;
+    TextView uangIn, uangOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +42,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cashIn.setOnClickListener(this);
         cashOut.setOnClickListener(this);
         detailCash.setOnClickListener(this);
-
 
 
     }
