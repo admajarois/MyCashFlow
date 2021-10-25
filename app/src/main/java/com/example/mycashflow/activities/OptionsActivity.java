@@ -38,6 +38,8 @@ public class OptionsActivity extends AppCompatActivity {
                     editor.putString("username", "user");
                     editor.putString("password", newPassword.getEditText().getText().toString());
                     editor.apply();
+                    Toast.makeText(getBaseContext(), "Password berhasil diubah!", Toast.LENGTH_SHORT).show();
+                    finish();
                 } else {
                     Toast.makeText(getBaseContext(), "Password tidak sama!", Toast.LENGTH_SHORT).show();
                 }

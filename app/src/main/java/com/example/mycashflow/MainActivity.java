@@ -12,10 +12,12 @@ import com.example.mycashflow.activities.CashflowActivity;
 import com.example.mycashflow.activities.CashinActivity;
 import com.example.mycashflow.activities.CashoutActivity;
 import com.example.mycashflow.activities.OptionsActivity;
+import com.example.mycashflow.javaclass.DatabaseHelper;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     ImageButton pengaturan, cashIn, cashOut, detailCash;
+    DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +32,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cashIn = findViewById(R.id.tambahCashIn);
         cashOut = findViewById(R.id.tambahCashOut);
         detailCash = findViewById(R.id.buttonDetail);
+        databaseHelper = new DatabaseHelper(this);
 
         pengaturan.setOnClickListener(this);
         cashIn.setOnClickListener(this);
         cashOut.setOnClickListener(this);
         detailCash.setOnClickListener(this);
+
     }
 
     @Override

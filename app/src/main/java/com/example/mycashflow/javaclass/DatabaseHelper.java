@@ -51,6 +51,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
          Cursor cursor = db.rawQuery("SELECT * FROM "+TABLE_NAME+ " WHERE"+KEY_ID+"="+id, null);
          return cursor;
     }
+
+//    get pemasukan bulanan
+    public Cursor getIn() {
+         Cursor cursor = db.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+KEY_STATUS+"=pemasukan", null);
+         return cursor;
+    }
+
+//    get pengeluaran bulanan
+    public Cursor getOut() {
+         Cursor cursor = db.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE"+KEY_STATUS+"=pengeluaran", null);
+         return cursor;
+    }
+
 //    Insert data
     public void insertData(ContentValues values) {
          db.insert(TABLE_NAME, null, values);
