@@ -92,6 +92,7 @@
       android:layout_width="360dp"
       android:layout_height="wrap_content"
       android:text="kembali"
+      android:onClick="handleBack"
       android:layout_marginTop="20dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"

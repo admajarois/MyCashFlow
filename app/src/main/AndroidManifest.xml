@@ -10,20 +10,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyCashFlow">
         <activity
+            android:name=".activities.CashflowActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.Cashflow"
+            android:exported="false" />
+        <activity
             android:name=".activities.CashoutActivity"
             android:exported="false" />
         <activity
             android:name=".activities.CashinActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.SplashActivity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".activities.LoginActivity"
             android:exported="false" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".activities.OptionsActivity" />
         <activity
-            android:name=".activities.OptionsActivity"
+            android:name=".activities.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
