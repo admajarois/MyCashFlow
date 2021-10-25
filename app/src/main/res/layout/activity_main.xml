@@ -99,7 +99,7 @@
                     android:text="Pengeluaran Bulan Ini: " />
 
                 <TextView
-                    android:id="@+id/textView16"
+                    android:id="@+id/uangOut"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

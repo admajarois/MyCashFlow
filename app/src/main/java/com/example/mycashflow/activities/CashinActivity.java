@@ -64,12 +64,11 @@ public class CashinActivity extends AppCompatActivity {
     private void saveSQLite() {
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         String prefUsername = prefs.getString("username", "No name defined");
-
         String user = prefUsername;
-        String status = "pemasukan";
+        int status = 1;
         String tanggal = dateInput.getEditText().getText().toString();
         String nominalIn = nominal.getEditText().getText().toString();
-        String keteranganIn = nominal.getEditText().getText().toString();
+        String keteranganIn = keterangan.getEditText().getText().toString();
 
         ContentValues values =  new ContentValues();
         values.put(DatabaseHelper.KEY_USER, user);

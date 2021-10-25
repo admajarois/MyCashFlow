@@ -24,7 +24,7 @@ public class CashoutActivity extends AppCompatActivity {
     private static final String MY_PREFS_NAME = "MyPreferences";
     TextInputLayout dateOut, nominalOut, keteranganOut;
     SimpleDateFormat dateFormat;
-    Button buttonSimpen;
+    Button buttonSimpan;
 
     DatabaseHelper dbHelper;
 
@@ -37,10 +37,10 @@ public class CashoutActivity extends AppCompatActivity {
             System.out.println(e);
         }
         setContentView(R.layout.activity_cashout);
-
+        dbHelper = new DatabaseHelper(this);
         nominalOut = findViewById(R.id.nominal_cashout);
         keteranganOut = findViewById(R.id.desc_cashout);
-        buttonSimpen = findViewById(R.id.buttonSimpan);
+        buttonSimpan = findViewById(R.id.buttonSimpan);
         dateOut = findViewById(R.id.tanggal_cashout);
         dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.forLanguageTag("INDONESIA"));
 
@@ -51,7 +51,7 @@ public class CashoutActivity extends AppCompatActivity {
             }
         });
 
-        buttonSimpen.setOnClickListener(new View.OnClickListener() {
+        buttonSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 saveSQLite();
@@ -64,7 +64,7 @@ public class CashoutActivity extends AppCompatActivity {
         String prefUsername = prefs.getString("username", "No name defined");
 
         String user = prefUsername;
-        String status = "pengeluaran";
+        int status = 0;
         String tanggalOut = dateOut.getEditText().getText().toString();
         String nominal = nominalOut.getEditText().getText().toString();
         String keterangan = keteranganOut.getEditText().getText().toString();
@@ -76,7 +76,7 @@ public class CashoutActivity extends AppCompatActivity {
         values.put(DatabaseHelper.KEY_NOMINAL, nominal);
         values.put(DatabaseHelper.KEY_KETERANGAN, keterangan);
 
-        if (tanggalOut.equals("")||nominal.equals("")||keterangan.equals("")) {
+        if (tanggalOut.equals(" ")||nominal.equals(" ")||keterangan.equals(" ")) {
             Toast.makeText(CashoutActivity.this, "Harap isi semua data!", Toast.LENGTH_SHORT).show();
         }else  {
             dbHelper.insertData(values);

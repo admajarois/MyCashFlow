@@ -13,7 +13,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      public static final int DATABASE_VERSION=1;
      public static final String DATABASE_NAME = "MyCashFlow";
      public static final String TABLE_NAME = "CashFlow";
-
      public static final String KEY_ID = "id";
      public static final String KEY_USER = "User";
      public static final String KEY_STATUS = "Status";
@@ -30,8 +29,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE "+TABLE_NAME+"("+KEY_ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
-                        +KEY_USER+" TEXT,"+KEY_STATUS+" TEXT,"+KEY_TANGGAL+" TEXT,"+KEY_NOMINAL+" TEXT,"
-                        +KEY_KETERANGAN+" TEXT)";
+                        +KEY_USER+" TEXT,"+KEY_STATUS+" TEXT,"+KEY_NOMINAL+" TEXT,"+KEY_KETERANGAN
+                        +" TEXT," +KEY_TANGGAL+" TEXT)";
         db.execSQL(query);
     }
 
@@ -53,16 +52,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 //    get pemasukan bulanan
-    public Cursor getIn() {
-         Cursor cursor = db.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+KEY_STATUS+"=pemasukan", null);
-         return cursor;
-    }
+//    public Cursor getIn() {
+//         Cursor cursor = db.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+KEY_STATUS+"="+1, null);
+//         return cursor;
+//    }
 
 //    get pengeluaran bulanan
-    public Cursor getOut() {
-         Cursor cursor = db.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE"+KEY_STATUS+"=pengeluaran", null);
-         return cursor;
-    }
+//    public Cursor getOut() {
+//         Cursor cursor = db.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE"+KEY_STATUS+"="+0, null);
+//         return cursor;
+//    }
 
 //    Insert data
     public void insertData(ContentValues values) {
@@ -89,11 +88,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
              user.put("id", cursor.getString(cursor.getColumnIndexOrThrow(KEY_ID)));
              user.put("User", cursor.getString(cursor.getColumnIndexOrThrow(KEY_USER)));
              user.put("Status", cursor.getString(cursor.getColumnIndexOrThrow(KEY_STATUS)));
-             user.put("Tanggal", cursor.getString(cursor.getColumnIndexOrThrow(KEY_TANGGAL)));
              user.put("Nominal", cursor.getString(cursor.getColumnIndexOrThrow(KEY_NOMINAL)));
-             user.put("Keterangn", cursor.getString(cursor.getColumnIndexOrThrow(KEY_KETERANGAN)));
+             user.put("Keterangan", cursor.getString(cursor.getColumnIndexOrThrow(KEY_KETERANGAN)));
+             user.put("Tanggal", cursor.getString(cursor.getColumnIndexOrThrow(KEY_TANGGAL)));
              userList.add(user);
          }
          return userList;
+    }
+
+    public ArrayList<CashModel> readCash() {
+         SQLiteDatabase db = this.getReadableDatabase();
+
+         Cursor cashCursor = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+
+         ArrayList<CashModel> cashModelArrayList = new ArrayList<>();
+
+         if (cashCursor.moveToFirst()) {
+             do {
+                 cashModelArrayList.add(new CashModel(cashCursor.getInt(2),
+                         cashCursor.getString(3),
+                         cashCursor.getString(4),
+                         cashCursor.getString(5)));
+             }while (cashCursor.moveToNext());
+         }
+
+         cashCursor.close();
+         return cashModelArrayList;
     }
 }
