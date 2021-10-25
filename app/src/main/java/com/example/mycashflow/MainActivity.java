@@ -6,13 +6,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 
 import com.example.mycashflow.activities.CashflowActivity;
 import com.example.mycashflow.activities.CashinActivity;
 import com.example.mycashflow.activities.CashoutActivity;
 import com.example.mycashflow.activities.OptionsActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    ImageButton pengaturan, cashIn, cashOut, detailCash;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,25 +26,32 @@ public class MainActivity extends AppCompatActivity {
         } catch (NullPointerException e) {
             System.out.println(e);
         }
+        pengaturan = findViewById(R.id.pengaturan);
+        cashIn = findViewById(R.id.tambahCashIn);
+        cashOut = findViewById(R.id.tambahCashOut);
+        detailCash = findViewById(R.id.buttonDetail);
+
+        pengaturan.setOnClickListener(this);
+        cashIn.setOnClickListener(this);
+        cashOut.setOnClickListener(this);
+        detailCash.setOnClickListener(this);
     }
 
-    public void handleTambah(View view) {
-        Intent intent = new Intent(this, CashinActivity.class);
-        startActivity(intent);
-    }
-
-    public void handlePengeluaran(View view) {
-        Intent intent = new Intent(this, CashoutActivity.class);
-        startActivity(intent);
-    }
-
-    public void handlePengaturan(View view) {
-        Intent intent = new Intent(this, OptionsActivity.class);
-        startActivity(intent);
-    }
-
-    public void handleDetail(View view) {
-        Intent intent = new Intent(this, CashflowActivity.class);
-        startActivity(intent);
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.tambahCashIn:
+                startActivity(new Intent(MainActivity.this, CashinActivity.class));
+                break;
+            case R.id.tambahCashOut:
+                startActivity(new Intent(MainActivity.this, CashoutActivity.class));
+                break;
+            case R.id.buttonDetail:
+                startActivity(new Intent(MainActivity.this, CashflowActivity.class));
+                break;
+            case R.id.pengaturan:
+                startActivity(new Intent(MainActivity.this, OptionsActivity.class));
+                break;
+        }
     }
 }

@@ -12,5 +12,6 @@ public class CashflowActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cashflow);
+        setTitle("Detail Cash Flow");
     }
 }

@@ -142,7 +142,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
-                        android:onClick="handleTambah"
                         android:contentDescription="button menu"
                         app:srcCompat="@drawable/asset_7" />
 
@@ -175,7 +174,6 @@
                         android:id="@+id/tambahCashOut"
                         android:layout_width="match_parent"
                         android:layout_height="92dp"
-                        android:onClick="handlePengeluaran"
                         android:background="@null"
                         android:contentDescription="icon pengeluaran"
                         app:srcCompat="@drawable/asset_13" />
@@ -218,7 +216,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:background="@null"
-                        android:onClick="handleDetail"
                         android:contentDescription="button"
                         app:srcCompat="@drawable/asset_9" />
 
@@ -249,11 +246,10 @@
                     android:orientation="vertical">
 
                     <ImageButton
-                        android:id="@+id/imageButton4"
+                        android:id="@+id/pengaturan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@null"
-                        android:onClick="handlePengaturan"
                         android:contentDescription="button"
                         android:layout_gravity="center"
                         app:srcCompat="@drawable/asset_3" />
